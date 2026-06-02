@@ -237,7 +237,7 @@ func _update_actions(delta: float) -> void:
 	attack_cooldown = max(0.0, attack_cooldown - delta)
 	var item = _selected_item()
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and item != null:
-		var item_type := ITEMS[item].get("type", "")
+		var item_type: String = str(ITEMS[item].get("type", ""))
 		if item_type.find("武器") >= 0:
 			_attack()
 		elif item_type == "镐" or item_type == "斧":
@@ -331,7 +331,7 @@ func _update_enemies(delta: float) -> void:
 		_spawn_enemy()
 	for i in range(enemies.size() - 1, -1, -1):
 		var e = enemies[i]
-		var dx := player.x - e.x
+		var dx: float = float(player.x - e.x)
 		e.vx += sign(dx) * (170 if night else 125) * delta
 		e.vx *= 0.92
 		e.jump -= delta
@@ -409,14 +409,14 @@ func _move_body(body: Dictionary, delta: float) -> void:
 	body.vy = min(MAX_FALL, body.vy + GRAVITY * delta)
 	body.x += body.vx * delta
 	if _rect_hits_world(body.x, body.y, body.w, body.h):
-		var dir := sign(body.vx) if body.vx != 0 else 1
+		var dir: float = sign(body.vx) if body.vx != 0 else 1.0
 		while _rect_hits_world(body.x, body.y, body.w, body.h):
 			body.x -= dir
 		body.vx = 0
 	body.y += body.vy * delta
 	body.on_ground = false
 	if _rect_hits_world(body.x, body.y, body.w, body.h):
-		var dir := sign(body.vy) if body.vy != 0 else 1
+		var dir: float = sign(body.vy) if body.vy != 0 else 1.0
 		while _rect_hits_world(body.x, body.y, body.w, body.h):
 			body.y -= dir
 		if dir > 0:
@@ -547,7 +547,7 @@ func _draw_block(id: String, pos: Vector2) -> void:
 
 func _draw_player() -> void:
 	var base := Vector2(player.x + player.w / 2, player.y + player.h / 2)
-	var dir := player.facing
+	var dir: int = int(player.facing)
 	var held = _selected_item()
 	draw_rect(Rect2(base + Vector2(-12, -15), Vector2(24, 31)), Color("#b96642"))
 	draw_rect(Rect2(base + Vector2(-9, -10), Vector2(18, 19)), Color("#2f9a58"))
