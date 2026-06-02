@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>卡通泰拉瑞亚 - Web 基础版</title>
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="game-frame" aria-label="卡通泰拉瑞亚基础版">
+        <canvas id="game" width="1280" height="720"></canvas>
+        <div class="hud top-left item-hud">
+          <div class="inventory-label">物品栏</div>
+          <div id="hotbar" class="hotbar" aria-label="快捷栏"></div>
+        </div>
+        <div id="stats" class="hud top-right stats"></div>
+        <div id="inventoryPanel" class="panel inventory-panel" aria-label="背包"></div>
+        <div id="craftPanel" class="panel craft-panel" aria-label="合成"></div>
+        <div id="tooltip" class="item-tooltip" role="tooltip"></div>
+        <div id="toast" class="toast"></div>
+        <div class="menu">
+          <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="menuPanel">菜单</button>
+          <div id="menuPanel" class="menu-panel" aria-label="菜单">
+            <div class="menu-title">游戏指导</div>
+            <span>WASD/方向键移动</span>
+            <span>空格跳跃</span>
+            <span>左键挖掘/攻击</span>
+            <span>右键放置</span>
+            <span>1-0切换物品</span>
+            <span>背包内点击两格交换</span>
+            <span>E背包</span>
+            <span>C合成</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="src/game.js"></script>
+  </body>
+</html>
